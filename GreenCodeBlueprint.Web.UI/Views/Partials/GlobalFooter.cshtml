@@ -1,0 +1,33 @@
+﻿@inherits UmbracoViewPage
+
+@{
+    IPublishedContent rootNode = Model.Root();
+}
+
+<footer class="bg-neutral-800 py-8 text-white">
+    <div class="max-w-[1600px] px-6 mb-12 mx-auto">
+        <ul class="gap-6 flex flex-row justify-between">
+            @foreach (var node in rootNode.Children())
+            {
+                <li>
+                    <a href="@node.Url()" class="font-bold uppercase tracking-widest">
+                        @node.Name
+                    </a>
+                    @if (node.Children().Any())
+                    {
+                        <ul>
+                            @foreach (var childNode in node.Children())
+                            {
+                                <li><a href="@childNode.Url()">@childNode.Name</a></li>
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div class="max-w-[1600px] px-6 mx-auto">
+        <p>&copy; @DateTime.Now.Year minim studio</p>
+    </div>
+</footer>

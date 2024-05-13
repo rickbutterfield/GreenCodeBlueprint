@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Apis.Oauth2.v2" Version="1.68.0.1869" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="8.0.4" />
+		<PackageReference Include="Umbraco.Cms.Core" Version="13.3.0" />
+		<PackageReference Include="Umbraco.Cms.Web.Website" Version="13.3.0" />
+		<PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="13.3.0" />
+	</ItemGroup>
+
+</Project>

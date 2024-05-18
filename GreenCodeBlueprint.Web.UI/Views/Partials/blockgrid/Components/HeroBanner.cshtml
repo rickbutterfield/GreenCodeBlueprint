@@ -35,7 +35,7 @@
         @(!Context.Request.IsBlockPreviewRequest() ? "autoplay muted loop" : "")></video>
     }
     <div class="inset-0 bg-midnight-950 absolute z-0 z-10 h-full w-full opacity-70 mix-blend-multiply"></div>
-    <div class="max-w-[1600px] px-24 py-6 prose relative z-20 w-full">
+    <div class="max-w-[1600px] mx-auto px-24 py-6 prose relative z-20 w-full">
         @if (!string.IsNullOrEmpty(Model.Content.Title))
         {
             <h2 class="text-white font-display mb-6 text-6xl">@Model.Content.Title</h2>

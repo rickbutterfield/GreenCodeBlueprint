@@ -3,56 +3,41 @@
     Layout = "_Layout.cshtml";
 }
 
-<div class="min-h-[60dvh] relative flex items-center">
-    <video src="~/app/video.mp4" autoplay muted class="inset-0 absolute z-0 h-full w-full object-cover object-bottom"></video>
-    <div class="inset-0 bg-green-900 absolute z-0 z-10 h-full w-full opacity-70 mix-blend-multiply"></div>
-    <div class="max-w-[1600px] px-24 py-6 prose relative z-20 w-full">
-        <h2 class="text-white font-display mb-6 text-6xl">Summer 2024 collection</h2>
-        <p class="lead text-white mb-16">Shop the looks now. Trees planted with every order!</p>
-        <div class="gap-6 flex flex-row">
-            <a href="#" class="text-green-950 border-green-800 bg-white px-7 py-4 rounded-2xl border font-bold no-underline drop-shadow-md hover:bg-green-100 hover:drop-shadow-lg">
-                Button 1
-            </a>
-            <a href="#" class="text-green-950 border-green-800 bg-white px-7 py-4 rounded-2xl border font-bold no-underline drop-shadow-md hover:bg-green-100 hover:drop-shadow-lg">
-                Button 2
-            </a>
-        </div>
-    </div>
-</div>
+@await Html.GetBlockGridHtmlAsync(Model.GridContent)
 
 <div class="bg-stone-50">
     <div class="max-w-[1600px] px-6 py-12 relative z-20 mx-auto w-full">
         <h2 class="font-display mb-12 text-center text-5xl font-bold">New Arrivals &rarr;</h2>
 
         <div class="gap-6 grid grid-cols-4">
-            <div class="bg-white p-4 rounded">
+            <a class="bg-white p-4 rounded group hover:bg-mantis-600 hover:drop-shadow-lg transition" href="#">
                 <img src="" class="mb-6 rounded" width="400" height="400" />
                 <div>
-                    <p class="lead text-xl font-bold">Men's</p>
-                    <a class="text-neutral-600 hover:text-neutral-950" href="#">Explore &rarr;</a>
+                    <p class="lead text-xl font-bold group-hover:text-white transition">Men's</p>
+                    <span class="text-neutral-600 hover:text-neutral-950 group-hover:text-white transition">Explore &rarr;</span>
                 </div>
-            </div>
-            <div class="bg-white p-4 rounded">
+            </a>
+            <a class="bg-white p-4 rounded group hover:bg-mantis-600 hover:drop-shadow-lg transition" href="#">
                 <img src="" class="mb-6 rounded" width="400" height="400" />
                 <div>
-                    <p class="lead text-xl font-bold">Women's</p>
-                    <a class="text-neutral-600 hover:text-neutral-950" href="#">Explore &rarr;</a>
+                    <p class="lead text-xl font-bold group-hover:text-white transition">Women's</p>
+                    <span class="text-neutral-600 hover:text-neutral-950 group-hover:text-white transition">Explore &rarr;</span>
                 </div>
-            </div>
-            <div class="bg-white p-4 rounded">
+            </a>
+            <a class="bg-white p-4 rounded group hover:bg-mantis-600 hover:drop-shadow-lg transition" href="#">
                 <img src="" class="mb-6 rounded" width="400" height="400" />
                 <div>
-                    <p class="lead text-xl font-bold">Shoes</p>
-                    <a class="text-neutral-600 hover:text-neutral-950" href="#">Explore &rarr;</a>
+                    <p class="lead text-xl font-bold group-hover:text-white transition">Shoes</p>
+                    <span class="text-neutral-600 hover:text-neutral-950 group-hover:text-white transition">Explore &rarr;</span>
                 </div>
-            </div>
-            <div class="bg-white p-4 rounded">
+            </a>
+            <a class="bg-white p-4 rounded group hover:bg-mantis-600 hover:drop-shadow-lg transition" href="#">
                 <img src="" class="mb-6 rounded" width="400" height="400" />
                 <div>
-                    <p class="lead text-xl font-bold">Accessories</p>
-                    <a class="text-neutral-600 hover:text-neutral-950" href="#">Explore &rarr;</a>
+                    <p class="lead text-xl font-bold group-hover:text-white transition">Accessories</p>
+                    <span class="text-neutral-600 hover:text-neutral-950 group-hover:text-white transition">Explore &rarr;</span>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

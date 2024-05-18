@@ -20,7 +20,7 @@ namespace GreenCodeBlueprint.Web.Models.ModelsBuilder
 {
 	/// <summary>Content</summary>
 	[PublishedModel("content")]
-	public partial class Content : PublishedContentModel, IPageSettings
+	public partial class Content : PublishedContentModel, IPageContent, IPageSettings
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,5 +48,13 @@ namespace GreenCodeBlueprint.Web.Models.ModelsBuilder
 		}
 
 		// properties
+
+		///<summary>
+		/// Grid Content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.3.0+a325ba3")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("gridContent")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel GridContent => global::GreenCodeBlueprint.Web.Models.ModelsBuilder.PageContent.GetGridContent(this, _publishedValueFallback);
 	}
 }

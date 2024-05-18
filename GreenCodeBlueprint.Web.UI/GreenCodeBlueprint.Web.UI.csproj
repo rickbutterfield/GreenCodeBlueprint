@@ -8,6 +8,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CarbonIntensityUK" Version="2.1.1" />
 		<PackageReference Include="SeoToolkit.Umbraco" Version="3.5.0" />
 		<PackageReference Include="Skybrud.Umbraco.Redirects" Version="13.0.4" />
 		<PackageReference Include="Umbraco.Cms" Version="13.3.0" />

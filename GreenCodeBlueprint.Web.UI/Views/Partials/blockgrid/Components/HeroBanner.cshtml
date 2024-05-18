@@ -1,0 +1,56 @@
+﻿@using CarbonIntensityUK.Controllers
+@inherits UmbracoViewPage<BlockGridItem<HeroBanner>>
+
+@{
+    var intensity = await RegionalIntensity.Get(CarbonIntensityUK.Models.RegionIDs.London);
+    var currentIntensity = intensity.FirstOrDefault();
+    var intensityIndex = currentIntensity!.RegionData.FirstOrDefault()?.Intensity.Index;
+    bool highIntensity = false;
+
+    if (intensityIndex == "high" || intensityIndex == "very high")
+    {
+        highIntensity = true;
+    }
+}
+
+<div class="min-h-[60dvh] relative flex items-center">
+    @if (Model.Content.BackgroundImage != null)
+    {
+        if (!highIntensity)
+        {
+            <img src="@Model.Content.BackgroundImage.GetCropUrl(1000, 800)" alt="" class="inset-0 absolute z-0 h-full w-full object-cover object-bottom" />
+        }
+        else
+        {
+            // Replace with a blurhash
+            <img src="@Model.Content.BackgroundImage.GetCropUrl(10, 8)" alt="" class="inset-0 absolute z-0 h-full w-full object-cover object-bottom" />
+        }
+
+    }
+    @if (Model.Content.BackgroundVideo != null && !highIntensity)
+    {
+        <video src="@Model.Content.BackgroundVideo.Url()"
+               class="inset-0 absolute z-0 h-full w-full object-cover object-bottom"
+               poster="@Model.Content.BackgroundImage?.GetCropUrl(1000, 800)"
+        @(!Context.Request.IsBlockPreviewRequest() ? "autoplay muted loop" : "")></video>
+    }
+    <div class="inset-0 bg-midnight-950 absolute z-0 z-10 h-full w-full opacity-70 mix-blend-multiply"></div>
+    <div class="max-w-[1600px] px-24 py-6 prose relative z-20 w-full">
+        @if (!string.IsNullOrEmpty(Model.Content.Title))
+        {
+            <h2 class="text-white font-display mb-6 text-6xl">@Model.Content.Title</h2>
+        }
+        @if (!string.IsNullOrEmpty(Model.Content.Subtitle))
+        {
+            <p class="lead text-white mb-16">@Model.Content.Subtitle</p>
+        }
+        @if (Model.Content.CallToAction != null)
+        {
+            <div class="gap-6 flex flex-row">
+                <a href="@Model.Content.CallToAction.Url" target="@Model.Content.CallToAction.Target" class="text-green-950 border-green-800 bg-white px-7 py-4 rounded-2xl border font-bold no-underline drop-shadow-md hover:bg-green-100 hover:drop-shadow-lg">
+                    @Model.Content.CallToAction.Name
+                </a>
+            </div>
+        }
+    </div>
+</div>

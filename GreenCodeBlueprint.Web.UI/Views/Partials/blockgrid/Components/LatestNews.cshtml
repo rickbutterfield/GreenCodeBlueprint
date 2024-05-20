@@ -1,0 +1,43 @@
+﻿@inject INewsService _newsService
+@inherits UmbracoViewPage<BlockGridItem<LatestNews>>
+
+@{
+    var articles = _newsService.GetNewsItems();
+    var filteredArticles = articles.Take(Model.Content.NumberOfArticlesToShow);
+}
+
+<div class="bg-white">
+    <div class="max-w-[1600px] px-6 py-12 relative z-20 mx-auto w-full">
+        @if (!string.IsNullOrEmpty(Model.Content.Title))
+        {
+            <h2 class="font-display mb-12 text-5xl font-bold">@Model.Content.Title &rarr;</h2>
+        }
+
+        <div class="gap-6 grid grid-cols-3">
+            @foreach (var article in filteredArticles)
+            {
+                var date = article.CreateDate;
+                if (article.PublishedDate != DateTime.MinValue)
+                {
+                    date = article.PublishedDate;
+                }
+
+                <a class="transition bg-bianca-50 hover:bg-bianca-100 drop-shadow hover:drop-shadow-lg rounded overflow-hidden" href="@article.Url()">
+                    @if (article.Image != null)
+                    {
+                        <img src="@article.Image.GetCropUrl(1200, 600)" class="mb-0" width="600" height="300" loading="lazy" />
+                    }
+                    <span class="block p-4">
+                        <p class="text-bianca-800">@date.ToString("dd MMMM yyyy")</p>
+                        <p class="lead text-xl font-bold mb-2">@article.Name</p>
+                        @if (!string.IsNullOrEmpty(article.Excerpt))
+                        {
+                            <p>@article.Excerpt.Truncate(100)</p>
+                        }
+                        <span class="text-neutral-600 hover:text-neutral-950" href="#">Explore &rarr;</span>
+                    </span>
+                </a>
+            }
+        </div>
+    </div>
+</div>

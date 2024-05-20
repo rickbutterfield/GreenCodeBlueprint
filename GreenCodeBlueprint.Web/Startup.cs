@@ -1,4 +1,6 @@
+using GreenCodeBlueprint.Web.Interfaces;
 using GreenCodeBlueprint.Web.Options;
+using GreenCodeBlueprint.Web.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
@@ -9,8 +11,9 @@ namespace GreenCodeBlueprint.Web
     {
         public void Compose(IUmbracoBuilder builder)
         {
-            builder.Services
-                .ConfigureOptions<GoogleBackOfficeExternalLoginProviderOptions>();
+            builder.Services.ConfigureOptions<GoogleBackOfficeExternalLoginProviderOptions>();
+
+            builder.Services.AddScoped<INewsService, NewsService>();
         }
     }
 }

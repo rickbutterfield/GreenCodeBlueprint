@@ -6,6 +6,11 @@
 		<Nullable>enable</Nullable>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Content Include="wwwroot\media\cfcghxg4\toomas-tartes-yizrl9n_eda-unsplash.jpg" />
+	  <Content Include="wwwroot\media\dwyhmkmf\seaweed-hero_68fe5819-1d4c-4db1-b702-508379220857-1.jpg" />
+	  <Content Include="wwwroot\media\jbpfrm2o\video.mp4" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CarbonIntensityUK" Version="2.1.1" />

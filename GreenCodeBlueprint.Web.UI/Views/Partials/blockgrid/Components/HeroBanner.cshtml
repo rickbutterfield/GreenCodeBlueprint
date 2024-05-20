@@ -24,6 +24,7 @@
         {
             // Replace with a blurhash
             <img src="@Model.Content.BackgroundImage.GetCropUrl(10, 8)" alt="" class="inset-0 absolute z-0 h-full w-full object-cover object-bottom" />
+            <span class="z-20 bg-red-400 px-4 py-2 bottom-0 absolute">Grid intensity is @intensityIndex right now</span>
         }
 
     }
@@ -34,7 +35,7 @@
                poster="@Model.Content.BackgroundImage?.GetCropUrl(1000, 800)"
         @(!Context.Request.IsBlockPreviewRequest() ? "autoplay muted loop" : "")></video>
     }
-    <div class="inset-0 bg-midnight-950 absolute z-0 z-10 h-full w-full opacity-70 mix-blend-multiply"></div>
+    <div class="inset-0 bg-midnight-950 absolute z-10 h-full w-full opacity-70 mix-blend-multiply"></div>
     <div class="max-w-[1600px] mx-auto px-24 py-6 prose relative z-20 w-full">
         @if (!string.IsNullOrEmpty(Model.Content.Title))
         {

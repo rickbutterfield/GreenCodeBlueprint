@@ -24,6 +24,10 @@ export function getAspDotNetCertificate() {
   const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
 
   // check if the cert and key already exist
+
+  console.log(certFilePath);
+  console.log(keyFilePath);
+
   if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     // export a new copy of the cert and key from .NET
     const fetchCert = child_process.spawnSync('dotnet', [

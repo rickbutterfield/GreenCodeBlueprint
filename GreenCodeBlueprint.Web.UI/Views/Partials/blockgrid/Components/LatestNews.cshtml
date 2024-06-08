@@ -2,8 +2,7 @@
 @inherits UmbracoViewPage<BlockGridItem<LatestNews>>
 
 @{
-    var articles = _newsService.GetNewsItems();
-    var filteredArticles = articles.Take(Model.Content.NumberOfArticlesToShow);
+    var articles = _newsService.GetNewsItems(0, Model.Content.NumberOfArticlesToShow);
 }
 
 <div class="bg-white">
@@ -14,7 +13,7 @@
         }
 
         <div class="gap-6 grid grid-cols-3">
-            @foreach (var article in filteredArticles)
+            @foreach (var article in articles)
             {
                 var date = article.CreateDate;
                 if (article.PublishedDate != DateTime.MinValue)
@@ -25,7 +24,7 @@
                 <a class="transition bg-bianca-50 hover:bg-bianca-100 drop-shadow hover:drop-shadow-lg rounded overflow-hidden" href="@article.Url()">
                     @if (article.Image != null)
                     {
-                        <img src="@article.Image.GetCropUrl(1200, 600)" class="mb-0" width="600" height="300" loading="lazy" />
+                        <img src="@article.Image.GetCropUrl(600, 300, quality: 80)" class="mb-0" width="600" height="300" loading="lazy" alt="" />
                     }
                     <span class="block p-4">
                         <p class="text-bianca-800">@date.ToString("dd MMMM yyyy")</p>

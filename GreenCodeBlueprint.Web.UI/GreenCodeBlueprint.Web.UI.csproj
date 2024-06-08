@@ -16,20 +16,23 @@
 		<PackageReference Include="CarbonIntensityUK" Version="2.1.1" />
 		<PackageReference Include="SeoToolkit.Umbraco" Version="3.5.0" />
 		<PackageReference Include="Skybrud.Umbraco.Redirects" Version="13.0.4" />
-		<PackageReference Include="Umbraco.Cms" Version="13.3.0" />
+		<PackageReference Include="Umbraco.Cms" Version="13.3.2" />
 		<PackageReference Include="Umbraco.Community.BlockPreview" Version="1.8.4" />
-		<PackageReference Include="Umbraco.Community.Contentment" Version="4.7.0" />
-		<PackageReference Include="Umbraco.Community.Sustainability" Version="1.0.2" />
+		<PackageReference Include="Umbraco.Community.Contentment" Version="5.0.0" />
+		<PackageReference Include="Umbraco.Community.Sustainability" Version="1.0.3" />
 		<PackageReference Include="Umbraco.Forms" Version="13.1.2" />
 		<PackageReference Include="Umbraco.StorageProviders.AzureBlob" Version="13.0.1" />
-		<PackageReference Include="uSync" Version="13.2.2" />
+		<PackageReference Include="uSync" Version="13.2.3" />
+		<PackageReference Include="Vite.AspNetCore" Version="2.0.0" />
 	</ItemGroup>
+
+  <ItemGroup>
+		<ProjectReference Include="..\GreenCodeBlueprint.Web\GreenCodeBlueprint.Web.csproj" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
 		<PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
-		<PackageReference Include="Vite.AspNetCore" Version="2.0.0" />
-		<ProjectReference Include="..\GreenCodeBlueprint.Web\GreenCodeBlueprint.Web.csproj" />
 		<RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
 	</ItemGroup>
 

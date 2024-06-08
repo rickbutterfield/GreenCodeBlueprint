@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenCodeBlueprint.Web.UI",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenCodeBlueprint.Web", "GreenCodeBlueprint.Web\GreenCodeBlueprint.Web.csproj", "{37C9DC79-F29B-42CB-85BF-022A0200F807}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenCodeBlueprint.Core", "GreenCodeBlueprint.Core\GreenCodeBlueprint.Core.csproj", "{16E0843C-03ED-4919-9704-7FC2BF5F7C96}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenCodeBlueprint.Common", "GreenCodeBlueprint.Common\GreenCodeBlueprint.Common.csproj", "{765CCEC7-E783-4056-8728-4441897C0650}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreenCodeBlueprint.Frontend", "GreenCodeBlueprint.Frontend\GreenCodeBlueprint.Frontend.csproj", "{F9E204E6-58A3-41C9-9280-EED16558CC61}"
 EndProject
 Global

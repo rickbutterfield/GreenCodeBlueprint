@@ -1,3 +1,14 @@
 ﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+  --bg-colour: #f6f7ed;
+  --bg-colour-dark: #312817;
+}
+
+html,
+body {
+  background-color: light-dark(var(--bg-colour), var(--bg-colour-dark));
+}

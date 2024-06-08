@@ -1,51 +1,31 @@
-﻿using Examine;
-using GreenCodeBlueprint.Web.Interfaces;
+﻿using GreenCodeBlueprint.Web.Interfaces;
 using GreenCodeBlueprint.Web.Models.ModelsBuilder;
 using Umbraco.Cms.Core;
-using Umbraco.Cms.Core.PublishedCache;
-using Umbraco.Cms.Infrastructure.Examine;
+using Umbraco.Extensions;
 
 namespace GreenCodeBlueprint.Web.Services
 {
     public class NewsService : INewsService
     {
-        private readonly IExamineManager _examineManager;
         private readonly IPublishedContentQuery _publishedContentQuery;
 
-        public NewsService(
-            IExamineManager examineManager,
-            IPublishedContentQuery publishedContentQuery)
+        public NewsService(IPublishedContentQuery publishedContentQuery)
         {
-            _examineManager = examineManager;
             _publishedContentQuery = publishedContentQuery;
         }
 
-        public IEnumerable<NewsItem> GetNewsItems()
+        public IEnumerable<NewsItem> GetNewsItems(int skip = 0, int take = 10)
         {
-            if (!_examineManager.TryGetIndex(Constants.UmbracoIndexes.ExternalIndexName, out IIndex index))
+            var root = _publishedContentQuery.ContentAtRoot().FirstOrDefault(x => x.IsDocumentType(Home.ModelTypeAlias));
+            var newsRoot = root?.Children<News>()?.FirstOrDefault();
+            var newsArticles = newsRoot?.Children<NewsItem>()?.Where(x => x.IsVisible());
+
+            if (newsArticles != null)
             {
-                throw new InvalidOperationException($"No searcher found with name {Constants.UmbracoIndexes.ExternalIndexName}");
+                return newsArticles.Skip(skip).Take(take).ToList();
             }
 
-            var query = index.Searcher.CreateQuery(IndexTypes.Content);
-            var filter = query.Field("__NodeTypeAlias", NewsItem.ModelTypeAlias);
-
-            var results = filter.Execute();
-
-            List<NewsItem> typedResults = new();
-
-            foreach (var result in results)
-            {
-                var node = _publishedContentQuery.Content(result.Id);
-                var typedNode = node as NewsItem;
-
-                if (typedNode != null)
-                {
-                    typedResults.Add(typedNode);
-                }
-            }
-
-            return typedResults;
-        }
+            return new List<NewsItem>();
+        }        
     }
 }

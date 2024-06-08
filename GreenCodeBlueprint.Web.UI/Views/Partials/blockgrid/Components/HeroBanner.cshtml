@@ -2,15 +2,15 @@
 @inherits UmbracoViewPage<BlockGridItem<HeroBanner>>
 
 @{
-    var intensity = await RegionalIntensity.Get(CarbonIntensityUK.Models.RegionIDs.London);
-    var currentIntensity = intensity.FirstOrDefault();
-    var intensityIndex = currentIntensity!.RegionData.FirstOrDefault()?.Intensity.Index;
-    bool highIntensity = false;
+  var intensity = await RegionalIntensity.Get(CarbonIntensityUK.Models.RegionIDs.London);
+  var currentIntensity = intensity.FirstOrDefault();
+  var intensityIndex = currentIntensity!.RegionData.FirstOrDefault()?.Intensity.Index;
+  bool highIntensity = false;
 
-    if (intensityIndex == "high" || intensityIndex == "very high")
-    {
-        highIntensity = true;
-    }
+  if (intensityIndex == "high" || intensityIndex == "very high")
+  {
+      highIntensity = true;
+  }
 }
 
 <div class="min-h-[60dvh] relative flex items-center">
@@ -18,15 +18,14 @@
     {
         if (!highIntensity)
         {
-            <img src="@Model.Content.BackgroundImage.GetCropUrl(1000, 800)" alt="" class="inset-0 absolute z-0 h-full w-full object-cover object-bottom" />
+            <img src="@Model.Content.BackgroundImage.GetCropUrl(1000, 800, quality: 80)" alt="" class="inset-0 absolute z-0 h-full w-full object-cover object-bottom" />
         }
         else
         {
             // Replace with a blurhash
             <img src="@Model.Content.BackgroundImage.GetCropUrl(10, 8)" alt="" class="inset-0 absolute z-0 h-full w-full object-cover object-bottom" />
             <span class="z-20 bg-red-400 px-4 py-2 bottom-0 absolute">Grid intensity is @intensityIndex right now</span>
-        }
-
+        }      
     }
     @if (Model.Content.BackgroundVideo != null && !highIntensity)
     {

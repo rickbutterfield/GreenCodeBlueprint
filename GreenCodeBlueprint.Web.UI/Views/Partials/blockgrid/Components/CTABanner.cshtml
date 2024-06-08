@@ -1,0 +1,27 @@
+@inherits UmbracoViewPage<BlockGridItem<CTabanner>>
+
+<div class="relative flex justify-center items-center">
+  @if (Model.Content.BackgroundImage != null)
+  {
+      <img src="@Model.Content.BackgroundImage.GetCropUrl(1500, 800, quality: 80)" alt="" loading="lazy" class="inset-0 absolute z-0 h-full w-full object-cover" />
+  }
+
+  <div class="inset-0 bg-salem-900 absolute z-10 h-full w-full opacity-70 mix-blend-multiply"></div>
+
+  <div class="max-w-[800px] mx-auto px-6 py-24 prose relative z-20 w-full text-center">
+    <h2 class="text-white font-display mb-6 text-6xl">@Model.Content.Title</h2>
+    @if (Model.Content.Content != null)
+    {
+      <div class="text-white mb-16">
+        @Html.Raw(Model.Content.Content)
+      </div>
+    }
+    @if (Model.Content.CallToAction != null)
+    {
+      <a href="@Model.Content.CallToAction.Url" target="@Model.Content.CallToAction.Target"
+        class="text-green-950 border-green-800 bg-white px-7 py-4 rounded-2xl border font-bold no-underline drop-shadow-md hover:bg-green-100 hover:drop-shadow-lg">
+        @Model.Content.CallToAction.Name
+      </a>
+    }
+  </div>
+</div>

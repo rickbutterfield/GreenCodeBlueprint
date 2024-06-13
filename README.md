@@ -33,19 +33,19 @@ Nothing too specific exists on this site (other than the behaviour above) but yo
 Just get rid of videos, or at least stop them autoplaying and use a facade! See [lite-youtube-embed](https://github.com/paulirish/lite-youtube-embed) for a great, modern example.
 
 ### 6. Stores data locally on the user�s device to minimize data transfer.
-A [Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) is configured to locally cache styles, scripts, images coming from Umbraco and more. See `[sw.js](https://github.com/rickbutterfield/GreenCodeBlueprint/blob/master/GreenCodeBlueprint.Web.UI/wwwroot/sw.js)` for the specific setup.
+A [Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers) is configured to locally cache styles, scripts, images coming from Umbraco and more. See [`sw.js`](https://github.com/rickbutterfield/GreenCodeBlueprint/blob/master/GreenCodeBlueprint.Web.UI/wwwroot/sw.js) for the specific setup.
 
 ### 7. Compresses all data to the greatest extent possible.
 - image cropping
 - minified CSS/JS
 
 ### 8. Loads only the most crucial programming scripts, frameworks and cookies.
-
+Don't load Google Maps on every page if you're only using it on your contact page!
 
 ### 9. Limits the amount of light emitted by the screen.
 Dark mode baby! First class citizen on the web since 2018, and there is the start of changing some components on the site to use Tailwind's `dark:` modifier.
 
-There is also an example in `[style.scss](https://github.com/rickbutterfield/GreenCodeBlueprint/blob/master/GreenCodeBlueprint.Frontend/src/scss/style.scss)` of a more modern CSS/Sass approach using the new [`light-dark()` function](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark).
+There is also an example in [`style.scss`](https://github.com/rickbutterfield/GreenCodeBlueprint/blob/master/GreenCodeBlueprint.Frontend/src/scss/style.scss) of a more modern CSS/Sass approach using the new [`light-dark()` function](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark).
 
 ### 10. Optimizes and limits the use of custom fonts.
 Some third party fonts are loaded in this site as an example, but the ideal would be to use a system font stack where possible, like GitHub uses:
